@@ -33,57 +33,36 @@ namespace Flyweight
 
     public abstract class Bacterium
     {
-        protected string Shape { get; set; }
-        public Bacterium(string shape)
+        // Operation - Explore, ExtrinisicStates are size and shape
+        public abstract void Explore(int size, string shape);
+    }
+
+    public class ConcreteBacterium : Bacterium
+    {
+        // intrinsicState is id
+        public int Id { get; private set; }
+        public int Size { get; private set; }
+        public string Shape { get; private set; }
+        public ConcreteBacterium(int id)
         {
+            Id = id;
+        }
+        public override void Explore(int size, string shape)
+        {
+            Size = size;
             Shape = shape;
         }
-        public abstract void Find(string colony);
     }
 
-    public class squareBacterium : Bacterium
+    public class UnsharedConcreteBacterium : Bacterium
     {
-        public squareBacterium() : base("square") { }
+        public int Size { get; private set; }
+        public string Shape { get; private set; }
 
-        public override void Find(string colony)
+        public override void Explore(int size, string shape)
         {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendFormat("this square bacterium find in {0}", colony);
-            MainWindow.ReportListBox.Items.Add(stringBuilder.ToString());
-        }
-    }
-
-    public class RoundBacterium : Bacterium
-    {
-        public RoundBacterium() : base("round")
-        {
-
-        }
-
-        public override void Find(string colony)
-        {
-            StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendFormat("this round bacterium find in {0}", colony);
-            MainWindow.ReportListBox.Items.Add(stringBuilder.ToString());
-        }
-    }
-
-    // Factory
-    public class BacteriumAccounting
-    {
-        Dictionary<string, Bacterium> bacteria = new Dictionary<string, Bacterium>();
-        public BacteriumAccounting()
-        {
-            bacteria.Add("Round", new RoundBacterium());
-            bacteria.Add("Square", new squareBacterium());
-        }
-
-        public Bacterium GetBacterium(string key)
-        {
-            if (bacteria.ContainsKey(key))
-                return bacteria[key];
-            else
-                return null;
+            Size = size;
+            Shape = shape;
         }
     }
 }
