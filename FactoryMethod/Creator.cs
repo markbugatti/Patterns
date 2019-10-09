@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FactoryMethod
 {
-    abstract class FigureBuilder
+    abstract class Creator
     {
-        abstract public Figure Create();
+        abstract public Figure Create(int row, int column);
     }
 }

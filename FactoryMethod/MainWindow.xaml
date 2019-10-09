@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FactoryMethod"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" KeyDown="Window_KeyDown">
+        Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid x:Name="PlayField" Width="240" Height="360" ShowGridLines="True" Loaded="Window_Loaded">
+        <Grid x:Name="PlayField" Width="240" Height="360" Loaded="Window_Loaded">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

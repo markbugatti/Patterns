@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FactoryMethod.Creators;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,46 +24,28 @@ namespace FactoryMethod
     public partial class MainWindow : Window
     {
         public static Grid grid;
-        private static Timer aTimer;
-        public static Figure figure;
         public MainWindow()
         {
             InitializeComponent();
             grid = PlayField;
-            figure = new FigureWorm();
-        }
-
-        private static void setTimer()
-        {
-            aTimer = new Timer(700);
-            aTimer.Elapsed += ATimer_Elapsed;
-            aTimer.Enabled = true;
-        }
-
-        public static void ATimer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            Application.Current.Dispatcher.Invoke(() =>
-            {
-                figure.moveDown();
-            });
-
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            setTimer();
+            Creator creator = new WormCreator();
+            Figure figure = creator.Create(1, 1);
+            creator = new ZetCreator();
+            Figure figure1 = creator.Create(2, 2);
+            creator = new TeCreator();
+            Figure figure2 = creator.Create(4, 2);
+            creator = new SquareCreator();
+            Figure figure3 = creator.Create(5, 1);
+            creator = new ElCreator();
+            Figure figure4 = creator.Create(1, 5);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Left)
-            {
-                figure.moveLeft();
-            }
-            if( e.Key == Key.Right)
-            {
-                figure.moveRight();
-            }
         }
     }
 }

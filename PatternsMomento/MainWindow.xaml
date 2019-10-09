@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid Width="450" ShowGridLines="True">
+        <Grid Width="450" 
+              ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -18,15 +19,15 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-            <local:PlayButton x:Name="btn1" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
-            <local:PlayButton x:Name="btn2" Grid.Column="1" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
-            <local:PlayButton x:Name="btn3" Grid.Column="2" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
-            <local:PlayButton x:Name="btn4" Grid.Row="1" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
-            <local:PlayButton x:Name="btn5" Grid.Row="1" Grid.Column="1" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
-            <local:PlayButton x:Name="btn6" Grid.Row="1" Grid.Column="2" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
-            <local:PlayButton x:Name="btn7" Grid.Row="2" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
-            <local:PlayButton x:Name="btn8" Grid.Row="2" Grid.Column="1" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
-            <local:PlayButton x:Name="btn9" Grid.Row="2" Grid.Column="2" Click="Button_Click" Content="" FontSize="36pt"></local:PlayButton>
+            <local:PlayButton x:Name="btn1" Click="Button_Click" Content=""></local:PlayButton>
+            <local:PlayButton x:Name="btn2" Grid.Column="1" Click="Button_Click" Content=""></local:PlayButton>
+            <local:PlayButton x:Name="btn3" Grid.Column="2" Click="Button_Click" Content=""></local:PlayButton>
+            <local:PlayButton x:Name="btn4" Grid.Row="1" Click="Button_Click" Content=""></local:PlayButton>
+            <local:PlayButton x:Name="btn5" Grid.Row="1" Grid.Column="1" Click="Button_Click" Content=""></local:PlayButton>
+            <local:PlayButton x:Name="btn6" Grid.Row="1" Grid.Column="2" Click="Button_Click" Content=""></local:PlayButton>
+            <local:PlayButton x:Name="btn7" Grid.Row="2" Click="Button_Click" Content=""></local:PlayButton>
+            <local:PlayButton x:Name="btn8" Grid.Row="2" Grid.Column="1" Click="Button_Click" Content=""></local:PlayButton>
+            <local:PlayButton x:Name="btn9" Grid.Row="2" Grid.Column="2" Click="Button_Click" Content=""></local:PlayButton>
         </Grid>
         <Button Content="Отменить Ход" HorizontalAlignment="Left" Margin="667,391,0,0" VerticalAlignment="Top" Width="Auto" Click="Button_Click_1"/>
     </Grid>

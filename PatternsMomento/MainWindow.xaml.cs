@@ -30,15 +30,15 @@ namespace PatternsMomento
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            PlayButton playButton = ((PlayButton)sender);
-            string content = playButton.Content.ToString();
-            if (content == "") {
-                if (game.History.Count == 0)
-                {
-                    counter = 0;
-                }
-                string name = playButton.Name;
-                ButtonMomento buttonMomento = new ButtonMomento(name, content);
+            if(game.History.Count == 0)
+            {
+                counter = 0;
+            }
+            PlayButton button = (PlayButton)sender;
+            string content = button.Content.ToString();
+            if (content == "")
+            {
+                ButtonMomento buttonMomento = new ButtonMomento(button.Name, content);
                 game.History.Push(buttonMomento);
 
                 if ((counter % 2) == 0)
@@ -49,23 +49,15 @@ namespace PatternsMomento
 
                 ((Button)sender).Content = content;
             }
-            else
-            {
-                MessageBox.Show("Эта клеточка уже занята");
-            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            if (game.History.Count > 0)
+            if (game.History.Count != 0)
             {
                 ButtonMomento buttonMomento = game.History.Pop();
-                PlayButton playButton = (PlayButton)this.FindName(buttonMomento.Name);
-                playButton.RestoreState(buttonMomento);
-            }
-            else
-            {
-                MessageBox.Show("Вы отменили все возможные ходы");
+                PlayButton button = (PlayButton)this.FindName(buttonMomento.Name);
+                button.RestoreState(buttonMomento);
             }
         }
     }
