@@ -59,11 +59,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Creators\ElCreator.cs" />
-    <Compile Include="Creators\SquareCreator.cs" />
-    <Compile Include="Creators\TeCreator.cs" />
-    <Compile Include="Creators\WormCreator.cs" />
-    <Compile Include="Creators\ZetCreator.cs" />
     <Compile Include="Figure.cs" />
     <Compile Include="Creator.cs" />
     <Compile Include="Figures\ElFigure.cs" />
