@@ -13,25 +13,36 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AbstractFactory
+namespace PatternObserver
 {
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static StackPanel stackPanel;
+        public static MainWindow mainWindow;
         public MainWindow()
         {
             InitializeComponent();
-            stackPanel = MovieStackPanel;
-            Movie movie = FilmFactory.Create("Narnia", "russian");
-            movie = FilmFactory.Create("Narnia", "german");
-            movie = FilmFactory.Create("Avengers", "ukrainian");
-            movie = FilmFactory.Create("Avengers", "english");
-            movie = FilmFactory.Create("LionTheKing", "english");
-            movie = FilmFactory.Create("LionTheKing", "ukrainian");
+
+            mainWindow = this;
+
+            Publisher Publisher1 = new Publisher();
+            Post NewPost = new Post();
+            Publisher1.AddObserver(NewPost);
+
+            JournalHuman human1 = new JournalHuman();
+            NewspaperHuman human2 = new NewspaperHuman();
+
             
+            NewPost.AddObserver(human1);
+            NewPost.AddObserver(human2);
+
+            Publisher1.NotifyObservers();
+            NewPost.NotifyObservers();
+            
+
         }
     }
 }

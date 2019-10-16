@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2B5753C-297C-4124-9D96-3D975DA845CA}</ProjectGuid>
+    <ProjectGuid>{9477324F-EEE2-4606-9C59-C00675D7B92D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>AbstractFactory</RootNamespace>
-    <AssemblyName>AbstractFactory</AssemblyName>
+    <RootNamespace>Strategy</RootNamespace>
+    <AssemblyName>Strategy</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -63,22 +63,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Factories\GermanFactory.cs" />
-    <Compile Include="Factories\UkrainianFactory.cs" />
-    <Compile Include="Factories\RussianFactory.cs" />
-    <Compile Include="Movies\Avengers.cs" />
-    <Compile Include="Movies\ChroniclesOfNarnia.cs" />
-    <Compile Include="Factories\EnglishFactory.cs" />
-    <Compile Include="Factories\FilmFactory.cs" />
-    <Compile Include="Movies\LionTheKing.cs" />
-    <Compile Include="Movies\Movie.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Poster.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -103,14 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="описание.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\Avengers.jpg" />
-    <Resource Include="Images\TheChroniclesOfNarnia.jpg" />
-    <Resource Include="Images\TheLionKing.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

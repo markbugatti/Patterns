@@ -13,25 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AbstractFactory
+namespace Strategy
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static StackPanel stackPanel;
         public MainWindow()
         {
             InitializeComponent();
-            stackPanel = MovieStackPanel;
-            Movie movie = FilmFactory.Create("Narnia", "russian");
-            movie = FilmFactory.Create("Narnia", "german");
-            movie = FilmFactory.Create("Avengers", "ukrainian");
-            movie = FilmFactory.Create("Avengers", "english");
-            movie = FilmFactory.Create("LionTheKing", "english");
-            movie = FilmFactory.Create("LionTheKing", "ukrainian");
-            
         }
     }
 }

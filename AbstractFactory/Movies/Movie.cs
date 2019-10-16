@@ -9,6 +9,7 @@ namespace AbstractFactory
     public class Movie
     {
         public string Name { get; set; }
+        public Uri PosterPath { get; set; }
         public string SoundLanguage { get; set; }
         public string SubtitlesLanguage { get; set; }
     }

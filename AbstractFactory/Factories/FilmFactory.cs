@@ -43,11 +43,9 @@ namespace AbstractFactory
                 default:
                     throw new NotImplementedException("there is such language");
             }
-            
             factory.SetUp(movie);
+            Poster.AddPoster(movie);
             return movie;
-
-
         }
         public abstract Movie SetUp(Movie movie);
     }

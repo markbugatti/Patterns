@@ -11,6 +11,7 @@ namespace AbstractFactory
         public Avengers()
         {
             this.Name = "Avengers";
+            this.PosterPath = new Uri("Images/Avengers.jpg", UriKind.Relative);
         }
     }
 }
