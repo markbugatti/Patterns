@@ -11,12 +11,13 @@ namespace WashingMachine.Devices.Mechanical
     /// </summary>
     public class MechanicalDevice : Device
     {
-        private bool isOpen;
+        protected bool isOpen;
         public MechanicalDevice()
         {
             isOpen = false;
         }
-        public void Open() {
+        public void Open()
+        {
             isOpen = true;
         }
         public void Close()

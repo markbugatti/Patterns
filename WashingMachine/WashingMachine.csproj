@@ -63,13 +63,18 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Devices\Dashboard.cs" />
+    <Compile Include="Devices\Dashboard\Dashboard.cs" />
     <Compile Include="Devices\Device.cs" />
     <Compile Include="Devices\Electronic\ElectronicDevice.cs" />
+    <Compile Include="Devices\Electronic\Indicators\ProgramIndicator.cs" />
+    <Compile Include="Devices\Electronic\Indicators\TimerIndicator.cs" />
     <Compile Include="Devices\Electronic\MachineTimer.cs" />
     <Compile Include="Devices\Electronic\Motor.cs" />
     <Compile Include="Devices\Electronic\Thermometer.cs" />
     <Compile Include="Devices\Electronic\WaterHeater.cs" />
+    <Compile Include="Devices\Dashboard\Buttons\NextProgramButton.cs" />
+    <Compile Include="Devices\Dashboard\Buttons\PreviousProgramButton.cs" />
+    <Compile Include="Devices\Dashboard\Buttons\StopButton.cs" />
     <Compile Include="Devices\Mechanical\Container\Container.cs" />
     <Compile Include="Devices\Mechanical\Container\ContainerA.cs" />
     <Compile Include="Devices\Mechanical\Container\ContainerB.cs" />
@@ -87,6 +92,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProgramFactory.cs" />
+    <Compile Include="Programs\Combined.cs" />
+    <Compile Include="Programs\Cotton.cs" />
+    <Compile Include="Programs\Program.cs" />
+    <Compile Include="Programs\Synthetics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -115,9 +125,6 @@
   <ItemGroup>
     <Resource Include="Описание.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Devices\Electronic\Indicators\" />
-    <Folder Include="Devices\Mechanical\Buttons\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

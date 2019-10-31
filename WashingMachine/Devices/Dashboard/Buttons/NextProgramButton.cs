@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WashingMachine.Devices.Electronic;
 
-namespace WashingMachine.Devices
+namespace WashingMachine.Devices.Dashboard.Buttons
 {
-    class Dashboard
+    class NextProgramButto
     {
-        MachineTimer machineTimer;
-
     }
 }
