@@ -12,6 +12,7 @@ namespace WashingMachine.Programs
         {
             MaxTemperature = 40;
             MaxDuration = 1.5m;
+            rpm = 1400;
         }
     }
 }

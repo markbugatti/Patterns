@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Devices\Dashboard\Dashboard.cs" />
+    <Compile Include="Devices\Dashboard\Screen.cs" />
     <Compile Include="Devices\Device.cs" />
     <Compile Include="Devices\Electronic\ElectronicDevice.cs" />
     <Compile Include="Devices\Electronic\Indicators\ProgramIndicator.cs" />
@@ -84,6 +85,9 @@
     <Compile Include="Devices\Mechanical\WaterDrainValve.cs" />
     <Compile Include="Devices\Mechanical\WaterIntakeValve.cs" />
     <Compile Include="Devices\Tank.cs" />
+    <Compile Include="Environment.cs" />
+    <Compile Include="Interfaces\IObservable.cs" />
+    <Compile Include="Interfaces\IObserver.cs" />
     <Compile Include="Interfaces\IStateable.cs" />
     <Compile Include="Machine.cs" />
     <Compile Include="MainWindow.xaml.cs">

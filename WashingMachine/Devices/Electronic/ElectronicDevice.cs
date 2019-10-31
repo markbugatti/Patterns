@@ -11,18 +11,18 @@ namespace WashingMachine.Devices
     /// </summary>
     public class ElectronicDevice : Device
     {
-        private bool isTurnedOn;
+        public bool IsTurnedOn { protected set; get; }
         public ElectronicDevice()
         {
-            isTurnedOn = false;
+            IsTurnedOn = false;
         }
         public void TurnOn()
         {
-            isTurnedOn = true;
+            IsTurnedOn = true;
         }
         public void TurnOff()
         {
-            isTurnedOn = false;
+            IsTurnedOn = false;
         }
     }
 }

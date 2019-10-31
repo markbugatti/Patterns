@@ -8,10 +8,11 @@ namespace WashingMachine.Programs
 {
     class Combined : Program
     {
-        public Combined()
+        public Combined(Machine machine) : base (machine) 
         {
             MaxTemperature = 50;
-            MaxDuration = 0.5m;
+            MaxDuration = 0.5;
+            rpm = 1000;
         }
 
     }
