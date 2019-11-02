@@ -7,40 +7,28 @@ using WashingMachine.Interfaces;
 
 namespace WashingMachine.Devices.Electronic
 {
-    public class Motor : ElectronicDevice, IObservable
+    public class Motor : ElectronicDevice
     {
         private double rpm;
-        private List<IObserver> observers;
+        public Motor()
+        {
+            observers = new List<IObserver>();
+        }
         public double GetRpm()
         {
             return rpm;
         }
 
-        public void NotifyObserver()
+        public override void TurnOn()
         {
-            foreach(IObserver observer in observers)
-            {
-                string message;
-                if(IsTurnedOn)
-                {
-                    message = "мотор ввідмкнений";
-                }
-                else
-                {
-                    message = "мотор вимкнений";
-                }
-                observer.Update(message);
-            }
+            base.TurnOn();
+            NotifyObserver("мотор ввідмкнено");
         }
 
-        public void RegisterObserver(IObserver observer)
+        public override void TurnOff()
         {
-            observers.Add(observer);
-        }
-
-        public void RemoveObserver(IObserver observer)
-        {
-            observers.Remove(observer);
+            base.TurnOff();
+            NotifyObserver("мотор вимкнено");
         }
 
         public void SetRpm(double value)

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WashingMachine.Interfaces;
 
 namespace WashingMachine.Devices.Mechanical
 {
@@ -16,11 +17,11 @@ namespace WashingMachine.Devices.Mechanical
         {
             isOpen = false;
         }
-        public void Open()
+        public virtual void Open()
         {
             isOpen = true;
         }
-        public void Close()
+        public virtual void Close()
         {
             isOpen = false;
         }

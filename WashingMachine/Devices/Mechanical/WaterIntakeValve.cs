@@ -8,6 +8,16 @@ namespace WashingMachine.Devices.Mechanical
 {
     public class WaterIntakeValve : MechanicalDevice
     {
-            
+        public override void Open()
+        {
+            base.Open();
+            NotifyObserver("Клапан забору води відкрито");
+        }
+
+        public override void Close()
+        {
+            base.Close();
+            NotifyObserver("Клапан забору води закрито");
+        }
     }
 }

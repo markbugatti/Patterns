@@ -22,7 +22,6 @@ namespace WashingMachine.Programs
         protected double rpm;
         private double passedTime;
         private double interval;
-        Timer MachineTimer;
         protected Machine machine;
 
         public Program(Machine machine)
@@ -48,31 +47,25 @@ namespace WashingMachine.Programs
             return duration;
         }
         public void Start() {
-            if (!machine.door.IsUnblocked)
-            {
-                machine.door.Block();
-                machine.intakeValve.Open();
-                // запустить таймер на 3 секунды, залить воду
-                machine.intakeValve.Close();
-                // запустить процес подогрева воды
-                //включить таймер
-                MachineTimer.Interval = interval;
-                MachineTimer.Elapsed += MachineTimer_Elapsed;
-                MachineTimer.Start();
+            machine.door.Block();
+            machine.intakeValve.Open();
+            // запустить таймер на 3 секунды, залить воду
+            machine.intakeValve.Close();
+            // запустить процес подогрева воды
+            //включить таймер
+            machine.MachineTimer.Interval = interval;
+            machine.MachineTimer.Elapsed += MachineTimer_Elapsed;
+            machine.MachineTimer.Start();
 
-                machine.motor.TurnOn();
-                machine.motor.SetRpm(rpm);
+            machine.motor.TurnOn();
+            machine.motor.SetRpm(rpm);
 
 
-                // злити воду
-                machine.drainValve.Open();
-                // запустить таймер на 3 секунды, вылить воду
-                machine.drainValve.Close();
-            }
-            else
-            {
-                // вывести на монитор закройте дверь, запустите снова
-            }
+            // злити воду
+            machine.drainValve.Open();
+            // запустить таймер на 3 секунды, вылить воду
+            machine.drainValve.Close();
+            machine.door.Unblock();
 
         }
 

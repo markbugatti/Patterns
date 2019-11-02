@@ -16,11 +16,11 @@ namespace WashingMachine.Devices
         {
             IsTurnedOn = false;
         }
-        public void TurnOn()
+        public virtual void TurnOn()
         {
             IsTurnedOn = true;
         }
-        public void TurnOff()
+        public virtual void TurnOff()
         {
             IsTurnedOn = false;
         }

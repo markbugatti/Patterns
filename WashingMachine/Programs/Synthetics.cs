@@ -8,10 +8,10 @@ namespace WashingMachine.Programs
 {
     class Synthetics : Program
     {
-        public Synthetics()
+        public Synthetics(Machine machine) : base(machine)
         {
             MaxTemperature = 40;
-            MaxDuration = 1.5m;
+            MaxDuration = 1.5;
             rpm = 1400;
         }
     }

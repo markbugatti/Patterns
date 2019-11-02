@@ -8,7 +8,7 @@ namespace WashingMachine.Programs
 {
     class Cotton : Program
     {
-        public Cotton()
+        public Cotton(Machine machine) : base(machine)
         {
             MaxTemperature = 90;
             MaxDuration = 2;

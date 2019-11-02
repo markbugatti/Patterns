@@ -12,11 +12,11 @@ namespace WashingMachine
         private Program cotton;
         private Program synthetic;
         private Program combined;
-        public ProgramFactory()
+        public ProgramFactory(Machine machine)
         {
-            cotton = new Cotton();
-            synthetic = new Synthetics();
-            combined = new Combined();
+            cotton = new Cotton(machine);
+            synthetic = new Synthetics(machine);
+            combined = new Combined(machine);
         }
 
         public Program Create(Type type)

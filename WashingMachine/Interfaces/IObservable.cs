@@ -10,6 +10,6 @@ namespace WashingMachine.Interfaces
     {
         void RegisterObserver(IObserver observer);
         void RemoveObserver(IObserver observer);
-        void NotifyObserver();
+        void NotifyObserver(string message);
     }
 }

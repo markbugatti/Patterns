@@ -14,13 +14,27 @@ namespace WashingMachine.Devices.Mechanical
             IsUnblocked = true;
         }
 
+        public override void Open()
+        {
+            base.Open();
+            NotifyObserver("Дверцята відкриті");
+        }
+
+
+        public override void Close()
+        {
+            base.Close();
+            NotifyObserver("Дверцята закриті");
+        }
         public void Block()
         {
             IsUnblocked = false;
+            NotifyObserver("Дверцята заблаковані");
         }
         public void Unblock()
         {
             IsUnblocked = true;
+            NotifyObserver("Дверцята розблаковані");
         }
     }
 }

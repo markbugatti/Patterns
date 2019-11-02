@@ -8,9 +8,9 @@ namespace WashingMachine.Devices.Electronic
 {
     class WaterHeater : ElectronicDevice
     {
-        public async Task HoldThemperature(Thermometer thermometer, Tank tank)
+        public void HoldThemperature(Thermometer thermometer, Tank tank)
         {
-            
+            NotifyObserver("Вода підігрівається");  
         }
     }
 }

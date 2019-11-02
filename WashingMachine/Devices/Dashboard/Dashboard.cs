@@ -9,7 +9,6 @@ namespace WashingMachine.Devices.Dashboard
 {
     class Dashboard
     {
-        MachineTimer machineTimer;
-
+        
     }
 }
