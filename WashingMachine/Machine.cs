@@ -8,7 +8,7 @@ using WashingMachine.Devices;
 using WashingMachine.Devices.Dashboard;
 using WashingMachine.Devices.Electronic;
 using WashingMachine.Devices.Mechanical;
-using WashingMachine.Devices.Mechanical.Container;
+using WashingMachine.Devices.Mechanical.Containers;
 using WashingMachine.Programs;
 
 namespace WashingMachine
@@ -25,10 +25,17 @@ namespace WashingMachine
         public Motor motor;
         public Thermometer thermometer;
         public WaterHeater waterHeater;
-        public Timer MachineTimer;
-
+        public MachineTimer machineTimer;
+        public Container containerA;
+        public Container containerB;
+        public ContainerSmall containerSmall;
+        public DetergentSupply detergentSupply;
         public Machine()
         {
+            containerA = new ContainerA();
+            containerB = new ContainerB();
+            containerSmall = new ContainerSmall();
+            detergentSupply = new DetergentSupply();
         }
 
     }

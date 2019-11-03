@@ -76,12 +76,13 @@
     <Compile Include="Devices\Dashboard\Buttons\NextProgramButton.cs" />
     <Compile Include="Devices\Dashboard\Buttons\PreviousProgramButton.cs" />
     <Compile Include="Devices\Dashboard\Buttons\StopButton.cs" />
-    <Compile Include="Devices\Mechanical\Container\Container.cs" />
-    <Compile Include="Devices\Mechanical\Container\ContainerA.cs" />
-    <Compile Include="Devices\Mechanical\Container\ContainerB.cs" />
+    <Compile Include="Devices\Mechanical\Containers\Container.cs" />
+    <Compile Include="Devices\Mechanical\Containers\ContainerA.cs" />
+    <Compile Include="Devices\Mechanical\Containers\ContainerB.cs" />
+    <Compile Include="Devices\DetergentSupply.cs" />
     <Compile Include="Devices\Mechanical\Door.cs" />
     <Compile Include="Devices\Mechanical\MechanicalDevice.cs" />
-    <Compile Include="Devices\Mechanical\Container\ContainerSmall.cs" />
+    <Compile Include="Devices\Mechanical\Containers\ContainerSmall.cs" />
     <Compile Include="Devices\Mechanical\WaterDrainValve.cs" />
     <Compile Include="Devices\Mechanical\WaterIntakeValve.cs" />
     <Compile Include="Devices\Tank.cs" />

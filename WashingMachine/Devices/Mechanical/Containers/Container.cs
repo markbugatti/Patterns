@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WashingMachine.Devices.Mechanical.Container
+namespace WashingMachine.Devices.Mechanical.Containers
 {
     /// <summary>
     /// Контейнер, состоит из трех отделов, но объязательно используеться только MainContainer
     /// </summary>
-    class Container : MechanicalDevice
+    public class Container : MechanicalDevice
     {
-        ContainerA PreWashContainer;
-        ContainerB MainContainer;
-        ContainerSmall ContainerSmall;
+        public string Name { get; protected set; }    
     }
 }

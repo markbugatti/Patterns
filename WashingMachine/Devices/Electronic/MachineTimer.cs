@@ -9,16 +9,27 @@ namespace WashingMachine.Devices.Electronic
 {
     class MachineTimer : ElectronicDevice
     {
-        private Timer timer;
-
-        public Timer GetTimer()
+        private DateTime time;
+        public MachineTimer()
         {
-            return timer;
         }
-
-        public void SetTimer(Timer value)
+        /// <summary>
+        /// Надо указать сколько секунд будет работать машина
+        /// </summary>
+        /// <param name="seconds"></param>
+        public void Start(int hours, int minutes)
         {
-            timer = value;
+
+            time = new DateTime(
+                DateTime.Now.Year,
+                DateTime.Now.Month,
+                DateTime.Now.Day,
+                hours,
+                minutes,
+                0);
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendFormat("таймер запущен на {0}:{1}:{2}", time.Hour, time.Minute, time.Second);
+            NotifyObserver(stringBuilder.ToString());
         }
     }
 }

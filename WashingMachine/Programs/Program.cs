@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using WashingMachine.Devices.Mechanical;
+using WashingMachine.Devices.Mechanical.Containers;
 
 namespace WashingMachine.Programs
 {
@@ -16,19 +18,18 @@ namespace WashingMachine.Programs
         /// <summary>
         /// Время в часах. 30 мин. = 0.5
         /// </summary>
-        protected double duration;
+        protected DateTime duration;
         protected double MaxTemperature;
         protected double MaxDuration;
         protected double rpm;
         private double passedTime;
-        private double interval;
         protected Machine machine;
+        protected List<Container> containers = new List<Container>();
 
         public Program(Machine machine)
         {
             this.machine = machine;
             passedTime = 0;
-            interval = 1000;
         }
         public void SetTemperature(double temperature) 
         {
@@ -38,11 +39,11 @@ namespace WashingMachine.Programs
         {  
             return temperature;
         }
-        public void SetDuration(double duration) 
+        public void SetDuration(int hours, int minutes)
         {
-            if (duration < MaxDuration) this.duration = duration;
+            duration = new DateTime(0, 0, 0, hours, minutes, 0);
         }
-        public double GetDuration()
+        public DateTime GetDuration()
         {
             return duration;
         }
@@ -52,30 +53,22 @@ namespace WashingMachine.Programs
             // запустить таймер на 3 секунды, залить воду
             machine.intakeValve.Close();
             // запустить процес подогрева воды
+            machine.waterHeater.KeepThemperature();
             //включить таймер
-            machine.MachineTimer.Interval = interval;
-            machine.MachineTimer.Elapsed += MachineTimer_Elapsed;
-            machine.MachineTimer.Start();
+            machine.machineTimer.Start(duration.Hour, duration.Minute);
 
             machine.motor.TurnOn();
             machine.motor.SetRpm(rpm);
-
+            // можно уменьшить время в таймере для подачи смеси
+            foreach(Container container in containers)
+            {
+                machine.detergentSupply.Supply(container);   
+            }
 
             // злити воду
             machine.drainValve.Open();
-            // запустить таймер на 3 секунды, вылить воду
             machine.drainValve.Close();
             machine.door.Unblock();
-
-        }
-
-        private void MachineTimer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            passedTime += interval;
-            if(passedTime >= duration)
-            {
-                machine.motor.TurnOff();
-            }    
         }
     }
 }

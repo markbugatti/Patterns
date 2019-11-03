@@ -34,6 +34,9 @@ namespace WashingMachine.Devices.Electronic
         public void SetRpm(double value)
         {
             rpm = value;
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendFormat("оберти двигуна: {0} об/хв", rpm);
+            NotifyObserver(stringBuilder.ToString());
         }
     }
 }
