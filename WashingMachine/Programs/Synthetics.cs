@@ -12,6 +12,7 @@ namespace WashingMachine.Programs
         {
             MaxTemperature = 40;
             MaxDuration = 1.5;
+            SetDuration(0, 0, 30);
             rpm = 1400;
             containers.Add(machine.containerB);
             containers.Add(machine.containerSmall);

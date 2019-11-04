@@ -22,14 +22,12 @@ namespace WashingMachine.Programs
         protected double MaxTemperature;
         protected double MaxDuration;
         protected double rpm;
-        private double passedTime;
         protected Machine machine;
         protected List<Container> containers = new List<Container>();
 
         public Program(Machine machine)
         {
             this.machine = machine;
-            passedTime = 0;
         }
         public void SetTemperature(double temperature) 
         {
@@ -39,15 +37,15 @@ namespace WashingMachine.Programs
         {  
             return temperature;
         }
-        public void SetDuration(int hours, int minutes)
+        public void SetDuration(int hours, int minutes, int seconds)
         {
-            duration = new DateTime(0, 0, 0, hours, minutes, 0);
+            duration = new DateTime(0, 0, 0, hours, minutes, seconds);
         }
         public DateTime GetDuration()
         {
             return duration;
         }
-        public void Start() {
+        public async void StartAsync() {
             machine.door.Block();
             machine.intakeValve.Open();
             // запустить таймер на 3 секунды, залить воду
@@ -55,8 +53,8 @@ namespace WashingMachine.Programs
             // запустить процес подогрева воды
             machine.waterHeater.KeepThemperature();
             //включить таймер
-            machine.machineTimer.Start(duration.Hour, duration.Minute);
-
+            machine.machineTimer.Start(duration.Hour, duration.Minute, duration.Second);
+            var timerTask = machine.machineTimer.StartAsync();
             machine.motor.TurnOn();
             machine.motor.SetRpm(rpm);
             // можно уменьшить время в таймере для подачи смеси
@@ -65,6 +63,8 @@ namespace WashingMachine.Programs
                 machine.detergentSupply.Supply(container);   
             }
 
+            await timerTask;
+            machine.machineTimer.End();
             // злити воду
             machine.drainValve.Open();
             machine.drainValve.Close();
