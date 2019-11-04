@@ -5,8 +5,82 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WashingMachine"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="Auto" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Покласти речі" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Відкрити" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="Button_Click" Margin="10"/>
+                    <RadioButton  x:Name="DoorIsOpen" Content="Двері відкриті" GroupName="doors" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" IsEnabled="False" />
+                    <RadioButton x:Name="DoorIsClosed" Content="Двері закриті" GroupName="doors" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True" Margin="10" IsEnabled="False"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1">
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Вага:" VerticalAlignment="Center" Width="33" Margin="10 10 0 10"/>
+                    <TextBox x:Name="WeightTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="75"/>
+                    <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Кг." VerticalAlignment="Center" Width="33" Margin="5 0"/>
+                </StackPanel>
+                <Button Grid.Row="2" x:Name="PutClothes" Content="Покласти" HorizontalAlignment="Left" Margin="10 10" VerticalAlignment="Center" Width="75" Click="PutClothesButton_Click" RenderTransformOrigin="0.491,3.281"/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="1" Header="Контейнер" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Left"  Text="Главное моющее средство" VerticalAlignment="Center" Margin="10"/>
+                <Button x:Name="ContainerBButton" Grid.Row="0" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="10" Click="ContainerBButton_Click"/>
+                <RadioButton Grid.Row="0" Grid.Column="2" x:Name="ContainerB_IsFull" Content="Наповнено" GroupName="container1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" IsEnabled="False" />
+                <RadioButton Grid.Row="0" Grid.Column="3" x:Name="ContainerB_IsEmpty" Content="Пусто" GroupName="container1" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True" Margin="10" IsEnabled="False"/>
+                 
+                <TextBlock Grid.Row="1" x:Name="ContainerNameTextBox" HorizontalAlignment="Left"  Text="Кондиционер или ополаскиватель" VerticalAlignment="Center" Margin="10"/>
+                <Button x:Name="ContainerAButton" Grid.Row="1" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="ContainerAButton_Click" Margin="10"/>
+                <RadioButton Grid.Row="1" Grid.Column="2" x:Name="ContainerA_IsFull" Content="Наповнено" GroupName="container2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" IsEnabled="False" />
+                <RadioButton Grid.Row="1" Grid.Column="3" x:Name="ContainerA_IsEmpty" Content="Пусто" GroupName="container2" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True" Margin="10" IsEnabled="False"/>
+
+                <TextBlock Grid.Row="2" HorizontalAlignment="Left"  Text="Для предварительной стирки" VerticalAlignment="Center" Margin="10"/>
+                <Button x:Name="ContainerSmallButton" Grid.Row="2" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="ContainerSmallButton_Click" Margin="10"/>
+                <RadioButton Grid.Row="2" Grid.Column="2" x:Name="ContainerSmall_IsFull" Content="Наповнено" GroupName="container3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" IsEnabled="False" />
+                <RadioButton Grid.Row="2" Grid.Column="3" x:Name="ContainerSmall_IsEmpty" Content="Пусто" GroupName="container3" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True" Margin="10" IsEnabled="False"/>
+            
+            </Grid>
+        </GroupBox>
+        <GroupBox Grid.Row="2" Header="Програма" HorizontalAlignment="Left" VerticalAlignment="Top" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <RadioButton Grid.Row="0" x:Name="ProgramCotton_RadioButton" Content="Бавовна" GroupName="programs" Margin="10" IsChecked="True"/>
+                <RadioButton Grid.Row="1" x:Name="ProgramSynthetic_RadioButton" Content="Синтетика" GroupName="programs" Margin="10"/>
+                <RadioButton Grid.Row="2" x:Name="ProgramCombined_RadioButton" Content="Змішана" GroupName="programs" Margin="10"/>
+                <Button x:Name="StartButton" Grid.Row="3" Content="Старт" Click="StartButton_Click" Margin="10"/>
+                <Button Grid.Row="4" Content="Зупинити" Click="Button_Click" Margin="10"/>
+
+            </Grid>
+        </GroupBox>
+
     </Grid>
 </Window>

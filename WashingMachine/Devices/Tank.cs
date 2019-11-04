@@ -8,7 +8,7 @@ namespace WashingMachine.Devices
 {
     class Tank
     {
-        decimal maxWeight = 10;
+        public decimal maxWeight = 10;
         public decimal themperature;
 
         public decimal Weight
@@ -19,7 +19,6 @@ namespace WashingMachine.Devices
             }
             set
             {
-                if (value <= maxWeight)
                     Weight = value;
             }
         }

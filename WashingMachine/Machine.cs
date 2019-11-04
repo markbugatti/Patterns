@@ -15,27 +15,28 @@ namespace WashingMachine
 {
     class Machine
     {
-        public Door door;
-        public Tank tank;
-        Container container;
-        Dashboard dashboard;
-        Program program;
-        public WaterIntakeValve intakeValve;
-        public WaterDrainValve drainValve;
-        public Motor motor;
-        public Thermometer thermometer;
-        public WaterHeater waterHeater;
-        public MachineTimer machineTimer;
-        public Container containerA;
-        public Container containerB;
-        public ContainerSmall containerSmall;
-        public DetergentSupply detergentSupply;
+        public Door door = new Door();
+        public Tank tank = new Tank();
+        public WaterIntakeValve intakeValve = new WaterIntakeValve();
+        public WaterDrainValve drainValve = new WaterDrainValve();
+        public Motor motor = new Motor();
+        public Thermometer thermometer = new Thermometer();
+        public WaterHeater waterHeater = new WaterHeater();
+        public MachineTimer machineTimer = new MachineTimer();
+        public Container containerA = new ContainerA();
+        public Container containerB = new ContainerB();
+        public ContainerSmall containerSmall = new ContainerSmall();
+        public DetergentSupply detergentSupply = new DetergentSupply();
         public Machine()
         {
-            containerA = new ContainerA();
-            containerB = new ContainerB();
-            containerSmall = new ContainerSmall();
-            detergentSupply = new DetergentSupply();
+            //door = new Door();
+            //tank = new Tank();
+            //this.program = program;
+
+            //containerA = new ContainerA();
+            //containerB = new ContainerB();
+            //containerSmall = new ContainerSmall();
+            //detergentSupply = new DetergentSupply();
         }
 
     }

@@ -45,7 +45,7 @@ namespace WashingMachine.Programs
         {
             return duration;
         }
-        public async void StartAsync() {
+        public async Task StartAsync() {
             machine.door.Block();
             machine.intakeValve.Open();
             // запустить таймер на 3 секунды, залить воду
