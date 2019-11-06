@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WashingMachine.Devices.Mechanical.Containers;
 using WashingMachine.Programs;
 
 namespace WashingMachine
@@ -25,20 +16,26 @@ namespace WashingMachine
         public MainWindow()
         {
             InitializeComponent();
-            machine = new Machine();
+            machine = new Machine(ProgramConsoleListBox, SystemConsoleListBox);
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Button button = (Button)sender;
-            if (DoorIsClosed.IsChecked == true) {
-                button.Content = "Відкрити";
-                DoorIsOpen.IsChecked = true;
-            }
-            else
+            
+            if (machine.door.IsUnblocked == true)
             {
-                button.Content = "Закрити";
-                DoorIsClosed.IsChecked = true;
+                Button button = (Button)sender;
+                if (DoorIsClosed.IsChecked == true)
+                {
+                    button.Content = "Закрити";
+                    DoorIsOpen.IsChecked = true;
+                }
+                else
+                {
+                    button.Content = "Відкрити";
+                    DoorIsClosed.IsChecked = true;
+                }
             }
         }
 
@@ -46,20 +43,31 @@ namespace WashingMachine
         {
             // якщо речі покладені та двері відкриті
             // перевірити кількість речей
-            if(DoorIsOpen.IsChecked == true)
+            if (DoorIsOpen.IsChecked == true)
             {
                 if (WeightTextBox.Text != "")
                 {
-                    int weight = Int32.Parse(WeightTextBox.Text);
+                    decimal weight = decimal.Parse(WeightTextBox.Text);
                     if (weight <= machine.tank.maxWeight)
                     {
                         machine.tank.Weight = weight;
+                        MessageBox.Show("Речі покладено");
                     }
                     else
                     {
-                        // вивести в консоль, що вага занадто велика
+                        StringBuilder stringBuilder = new StringBuilder();
+                        stringBuilder.AppendFormat("Занадто багато речей. Максимум {0} кг", machine.tank.maxWeight.ToString());
+                        MessageBox.Show(stringBuilder.ToString());
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Покладіть речі");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Відкрийте дверцята");
             }
         }
 
@@ -68,6 +76,7 @@ namespace WashingMachine
             if (ContainerB_IsFull.IsChecked == true)
             {
                 ContainerB_IsEmpty.IsChecked = true;
+                machine.containerB.Fill();
             }
             else
             {
@@ -77,9 +86,10 @@ namespace WashingMachine
 
         private void ContainerAButton_Click(object sender, RoutedEventArgs e)
         {
-            if(ContainerA_IsFull.IsChecked == true)
+            if (ContainerA_IsFull.IsChecked == true)
             {
                 ContainerA_IsEmpty.IsChecked = true;
+                machine.containerA.Fill();
             }
             else
             {
@@ -92,6 +102,7 @@ namespace WashingMachine
             if (ContainerSmall_IsFull.IsChecked == true)
             {
                 ContainerSmall_IsEmpty.IsChecked = true;
+                machine.containerSmall.Fill();
             }
             else
             {
@@ -99,19 +110,83 @@ namespace WashingMachine
             }
         }
 
-        private async void StartButton_Click(object sender, RoutedEventArgs e)
+        private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            
-            Program program = new Cotton(machine);
-            if (ProgramSynthetic_RadioButton.IsChecked == true)
+            if (DoorIsClosed.IsChecked == true)
             {
-                program = new Synthetics(machine);
+                Program program = new Cotton(machine);
+
+
+                if (ProgramSynthetic_RadioButton.IsChecked == true)
+                {
+                    program = new Synthetics(machine);
+                }
+                else if (ProgramCombined_RadioButton.IsChecked == true)
+                {
+                    program = new Combined(machine);
+                }
+                // заполнить лоток
+                program.Start();
             }
-            else if (ProgramCombined_RadioButton.IsChecked == true)
+            else
             {
-                program = new Combined(machine);
+                MessageBox.Show("Закрийте двері");
             }
-            await program.StartAsync();
+        }
+
+        private void ProgramSynthetic_RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            // Заблакировать кнопку 2, разблакировать кнопку 1 и 3
+            ContainerAButton.IsEnabled = false;
+            ContainerBButton.IsEnabled = true;
+            ContainerSmallButton.IsEnabled = true;
+            EmptyContainer();
+        }
+
+        private void ProgramCombined_RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            // Заблакировать кнопку 3, разблакировать кнопку 1 и 2
+            ContainerSmallButton.IsEnabled = false;
+            ContainerAButton.IsEnabled = true;
+            ContainerBButton.IsEnabled = true;
+        }
+
+        private void ProgramCotton_RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            // Заблакировать кнопку 3, разблакировать кнопку 1 и 2
+            ContainerSmallButton.IsEnabled = false;
+            ContainerAButton.IsEnabled = true;
+            ContainerBButton.IsEnabled = true;
+            EmptyContainer();
+        }
+
+        public void FillContainer(Type type)
+        {
+            if (type == typeof(ContainerA))
+            {
+                ContainerA_IsFull.IsChecked = true;
+                machine.containerA.Fill();
+            }
+            else if (type == typeof(ContainerB))
+            {
+                ContainerB_IsFull.IsChecked = true;
+                machine.containerB.Fill();
+            }
+            else if (type == typeof(ContainerSmall))
+            {
+                ContainerSmall_IsFull.IsChecked = true;
+                machine.containerSmall.Fill();
+            }
+        }
+        public void EmptyContainer(/*Type type*/)
+        {
+            ContainerSmall_IsEmpty.IsChecked = true;
+            ContainerB_IsEmpty.IsChecked = true;
+            ContainerA_IsEmpty.IsChecked = true;
+            machine.containerA.Empty();
+            machine.containerSmall.Empty();
+            machine.containerB.Empty();
+
         }
     }
 }

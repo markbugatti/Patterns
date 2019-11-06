@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WashingMachine.Devices.Mechanical;
 
 namespace WashingMachine.Devices
 {
-    class Tank
+    class Tank : MechanicalDevice
     {
         public decimal maxWeight = 10;
         public decimal themperature;
-
         public decimal Weight
         {
             get

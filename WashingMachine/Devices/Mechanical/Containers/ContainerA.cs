@@ -15,5 +15,17 @@ namespace WashingMachine.Devices.Mechanical.Containers
         {
             Name = "Контейнер для попереднього прання";
         }
+
+        public override void Fill()
+        {
+            base.Fill();
+            NotifyObserver("Контейнер для попереднього прання наполнено");
+        }
+
+        public override void Empty()
+        {
+            base.Empty();
+            NotifyObserver("Контейнер для попереднього прання порожній");
+        }
     }
 }

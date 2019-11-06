@@ -15,5 +15,17 @@ namespace WashingMachine.Devices.Mechanical.Containers
         {
             Name = "Контейнер для кондеціонеру та ополаскувача";
         }
+
+        public override void Fill()
+        {
+            base.Fill();
+            NotifyObserver("Контейнер для кондиціонеру та ополаскувача наполнено");
+        }
+
+        public override void Empty()
+        {
+            base.Empty();
+            NotifyObserver("Контейнер для кондиціонеру та ополаскувача порожній");
+        }
     }
 }

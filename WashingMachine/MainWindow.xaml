@@ -5,13 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WashingMachine"
         mc:Ignorable="d"
-        Title="MainWindow" Height="Auto" Width="800">
-    <Grid>
+        Title="MainWindow" Height="650" Width="800" >
+    <Grid VerticalAlignment="Center" Height="Auto">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="200" />
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="200"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="6"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <GroupBox Header="Покласти речі" HorizontalAlignment="Left" VerticalAlignment="Top">
             <Grid>
                 <Grid.RowDefinitions>
@@ -39,28 +44,33 @@
                     <RowDefinition/>
                     <RowDefinition/>
                     <RowDefinition/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="200"/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="0" HorizontalAlignment="Left"  Text="Главное моющее средство" VerticalAlignment="Center" Margin="10"/>
-                <Button x:Name="ContainerBButton" Grid.Row="0" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Margin="10" Click="ContainerBButton_Click"/>
-                <RadioButton Grid.Row="0" Grid.Column="2" x:Name="ContainerB_IsFull" Content="Наповнено" GroupName="container1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" IsEnabled="False" />
-                <RadioButton Grid.Row="0" Grid.Column="3" x:Name="ContainerB_IsEmpty" Content="Пусто" GroupName="container1" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True" Margin="10" IsEnabled="False"/>
-                 
-                <TextBlock Grid.Row="1" x:Name="ContainerNameTextBox" HorizontalAlignment="Left"  Text="Кондиционер или ополаскиватель" VerticalAlignment="Center" Margin="10"/>
-                <Button x:Name="ContainerAButton" Grid.Row="1" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="ContainerAButton_Click" Margin="10"/>
-                <RadioButton Grid.Row="1" Grid.Column="2" x:Name="ContainerA_IsFull" Content="Наповнено" GroupName="container2" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" IsEnabled="False" />
-                <RadioButton Grid.Row="1" Grid.Column="3" x:Name="ContainerA_IsEmpty" Content="Пусто" GroupName="container2" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True" Margin="10" IsEnabled="False"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="Главное моющее средство" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10" />
+                <Button x:Name="ContainerBButton" Grid.Row="0" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="ContainerBButton_Click" Margin="10"/>
+                <RadioButton Grid.Row="0" Grid.Column="2" x:Name="ContainerB_IsFull" Content="Наповнено" GroupName="container1" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" Margin="10"/>
+                <RadioButton Grid.Row="0" Grid.Column="3" x:Name="ContainerB_IsEmpty" Content="Пусто" GroupName="container1" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True" IsEnabled="False" Margin="10"/>
 
-                <TextBlock Grid.Row="2" HorizontalAlignment="Left"  Text="Для предварительной стирки" VerticalAlignment="Center" Margin="10"/>
-                <Button x:Name="ContainerSmallButton" Grid.Row="2" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Left" VerticalAlignment="Center" Width="75" Click="ContainerSmallButton_Click" Margin="10"/>
-                <RadioButton Grid.Row="2" Grid.Column="2" x:Name="ContainerSmall_IsFull" Content="Наповнено" GroupName="container3" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10" IsEnabled="False" />
-                <RadioButton Grid.Row="2" Grid.Column="3" x:Name="ContainerSmall_IsEmpty" Content="Пусто" GroupName="container3" HorizontalAlignment="Left" VerticalAlignment="Center" IsChecked="True" Margin="10" IsEnabled="False"/>
-            
+                <TextBlock Grid.Row="1" x:Name="ContainerNameTextBox" HorizontalAlignment="Left"  Text="Кондиционер или ополаскиватель" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="10"/>
+                <Button x:Name="ContainerAButton" Grid.Row="1" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="ContainerAButton_Click"/>
+                <RadioButton Grid.Row="1" Grid.Column="2" x:Name="ContainerA_IsFull" Content="Наповнено" GroupName="container2" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" />
+                <RadioButton Grid.Row="1" Grid.Column="3" x:Name="ContainerA_IsEmpty" Content="Пусто" GroupName="container2" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True" IsEnabled="False"/>
+
+                <TextBlock Grid.Row="2" Text="Для предварительной стирки" VerticalAlignment="Center"  Grid.ColumnSpan="2" Margin="10"/>
+                <Button IsEnabled="False" x:Name="ContainerSmallButton" Grid.Row="2" Grid.Column="1" Content="Наповнити" HorizontalAlignment="Center" VerticalAlignment="Center" Width="75" Click="ContainerSmallButton_Click"/>
+                <RadioButton Grid.Row="2" Grid.Column="2" x:Name="ContainerSmall_IsFull" Content="Наповнено" GroupName="container3" HorizontalAlignment="Center" VerticalAlignment="Center" IsEnabled="False" />
+                <RadioButton Grid.Row="2" Grid.Column="3" x:Name="ContainerSmall_IsEmpty" Content="Пусто" GroupName="container3" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True" IsEnabled="False"/>
+                <ListBox Grid.Row="3" Grid.ColumnSpan="5" >
+                    <ListBoxItem>Для прання бавовни необхідно наповнити контейнер 1 та 2</ListBoxItem>
+                    <ListBoxItem>Для прання синтетики необхідно наповнити контейнер 1 та 3</ListBoxItem>
+                    <ListBoxItem>Для змішаного прання необхідно наповнити контейнер 1 та 2</ListBoxItem>
+                </ListBox>
             </Grid>
         </GroupBox>
         <GroupBox Grid.Row="2" Header="Програма" HorizontalAlignment="Left" VerticalAlignment="Top" >
@@ -73,14 +83,17 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <RadioButton Grid.Row="0" x:Name="ProgramCotton_RadioButton" Content="Бавовна" GroupName="programs" Margin="10" IsChecked="True"/>
-                <RadioButton Grid.Row="1" x:Name="ProgramSynthetic_RadioButton" Content="Синтетика" GroupName="programs" Margin="10"/>
-                <RadioButton Grid.Row="2" x:Name="ProgramCombined_RadioButton" Content="Змішана" GroupName="programs" Margin="10"/>
-                <Button x:Name="StartButton" Grid.Row="3" Content="Старт" Click="StartButton_Click" Margin="10"/>
-                <Button Grid.Row="4" Content="Зупинити" Click="Button_Click" Margin="10"/>
+                <RadioButton Grid.Row="0" x:Name="ProgramCotton_RadioButton" Content="Бавовна" GroupName="programs" Margin="5" Checked="ProgramCotton_RadioButton_Checked"/>
+                <RadioButton Grid.Row="1" x:Name="ProgramSynthetic_RadioButton" Content="Синтетика" GroupName="programs" Margin="5" Checked="ProgramSynthetic_RadioButton_Checked"/>
+                <RadioButton Grid.Row="2" x:Name="ProgramCombined_RadioButton" Content="Змішана" GroupName="programs" Margin="5" Checked="ProgramCotton_RadioButton_Checked"/>
+                <Button x:Name="StartButton" Grid.Row="3" Content="Старт" Click="StartButton_Click" Margin="5"/>
+                <!--<Button Grid.Row="4" Content="Зупинити" Click="Button_Click" Margin="10"/>-->
 
             </Grid>
         </GroupBox>
+        <ListBox x:Name="SystemConsoleListBox" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+
+        <ListBox x:Name="ProgramConsoleListBox" Grid.Column="2" Grid.Row="1" Grid.RowSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 
     </Grid>
 </Window>

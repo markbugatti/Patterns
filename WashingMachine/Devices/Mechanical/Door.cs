@@ -13,11 +13,17 @@ namespace WashingMachine.Devices.Mechanical
         {
             IsUnblocked = true;
         }
-
         public override void Open()
         {
-            base.Open();
-            NotifyObserver("Дверцята відкриті");
+            if (IsUnblocked == true)
+            {
+                base.Open();
+                NotifyObserver("Дверцята відкриті");
+            }
+            else
+            {
+                NotifyObserver("Двері заблоковані");
+            }
         }
 
 

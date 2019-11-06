@@ -12,7 +12,6 @@ namespace WashingMachine.Devices.Mechanical
         public override void Open()
         {
             base.Open();
-            NotifyObserver("Зливний клапан відкрито");
         }
 
         public override void Close()

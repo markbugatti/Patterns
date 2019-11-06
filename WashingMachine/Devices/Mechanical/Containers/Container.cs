@@ -11,6 +11,19 @@ namespace WashingMachine.Devices.Mechanical.Containers
     /// </summary>
     public class Container : MechanicalDevice
     {
-        public string Name { get; protected set; }    
-    }
+        public string Name { get; protected set; }
+        public bool isFull { get; private set; }
+        public Container()
+        {
+            isFull = false;
+        }
+        public virtual void Fill()
+        {
+            isFull = true;
+        }
+        public virtual void Empty()
+        {
+            isFull = false;
+        }
+    } 
 }

@@ -39,13 +39,14 @@ namespace WashingMachine.Programs
         }
         public void SetDuration(int hours, int minutes, int seconds)
         {
-            duration = new DateTime(0, 0, 0, hours, minutes, seconds);
+            duration = new DateTime(1, 1, 1, hours, minutes, seconds);
         }
         public DateTime GetDuration()
         {
             return duration;
         }
-        public async Task StartAsync() {
+        public async void Start()
+        {
             machine.door.Block();
             machine.intakeValve.Open();
             // запустить таймер на 3 секунды, залить воду
@@ -54,14 +55,20 @@ namespace WashingMachine.Programs
             machine.waterHeater.KeepThemperature();
             //включить таймер
             machine.machineTimer.Start(duration.Hour, duration.Minute, duration.Second);
+            
             var timerTask = machine.machineTimer.StartAsync();
+            
+
+
             machine.motor.TurnOn();
             machine.motor.SetRpm(rpm);
             // можно уменьшить время в таймере для подачи смеси
-            foreach(Container container in containers)
+            foreach (Container container in containers)
             {
-                machine.detergentSupply.Supply(container);   
+                machine.detergentSupply.Supply(container);
+                machine.door.Open();
             }
+
 
             await timerTask;
             machine.machineTimer.End();
@@ -69,6 +76,7 @@ namespace WashingMachine.Programs
             machine.drainValve.Open();
             machine.drainValve.Close();
             machine.door.Unblock();
+            machine.programScreen.Update("");
         }
     }
 }

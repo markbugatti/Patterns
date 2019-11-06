@@ -29,30 +29,32 @@ namespace WashingMachine.Devices.Electronic
                 minutes,
                 seconds);
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendFormat("таймер запущен на {0}:{1}:{2}", time.Hour, time.Minute, time.Second);
+            stringBuilder.AppendFormat("Таймер запущен на {0}:{1}:{2}", time.Hour, time.Minute, time.Second);
             NotifyObserver(stringBuilder.ToString());
         }
 
         public void End()
         {
-            time = new DateTime(0, 0, 0, 0, 0, 0);
+            time = new DateTime(1, 1, 1, 0, 0, 0);
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendFormat("таймер истек {0}:{1}:{2}", time.Hour, time.Minute, time.Second);
+            stringBuilder.AppendFormat("Таймер зупинино {0}:{1}:{2}", time.Hour, time.Minute, time.Second);
             NotifyObserver(stringBuilder.ToString());
         }
 
-        public async Task StartAsync()
+        public async Task<bool> StartAsync()
         {
-            timer.Interval = 1000;
-            timer.Elapsed += Timer_Elapsed;
-            timer.Start();
+            //timer.Interval = 1000;
+            //timer.Elapsed += Timer_Elapsed;
+            //timer.Start();
 
             int minute = time.Hour * 60 + time.Minute;
             int second = minute * 60 + time.Second;
             int delay = second * 1000;
             await Task.Delay(delay);
-            timer.Stop();
+            return true;
+            //timer.Stop();
         }
+
 
         private void Timer_Elapsed(object sender, ElapsedEventArgs e)
         {

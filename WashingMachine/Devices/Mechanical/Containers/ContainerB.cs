@@ -15,5 +15,16 @@ namespace WashingMachine.Devices.Mechanical.Containers
         {
             Name = "Головний контейнер";
         }
+        public override void Fill()
+        {
+            base.Fill();
+            NotifyObserver("Головний контейнер наполнено");
+        }
+
+        public override void Empty()
+        {
+            base.Empty();
+            NotifyObserver("Головний контейнер порожній");
+        }
     }
 }

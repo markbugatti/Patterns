@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
+using System.Windows.Controls;
 using WashingMachine.Devices;
 using WashingMachine.Devices.Dashboard;
 using WashingMachine.Devices.Electronic;
@@ -14,7 +15,7 @@ using WashingMachine.Programs;
 namespace WashingMachine
 {
     class Machine
-    {
+    {   
         public Door door = new Door();
         public Tank tank = new Tank();
         public WaterIntakeValve intakeValve = new WaterIntakeValve();
@@ -27,17 +28,25 @@ namespace WashingMachine
         public Container containerB = new ContainerB();
         public ContainerSmall containerSmall = new ContainerSmall();
         public DetergentSupply detergentSupply = new DetergentSupply();
-        public Machine()
+        public Screen programScreen;
+        public Screen systemScreen;
+        public Machine(ListBox ProgramScreen, ListBox systemScreen)
         {
-            //door = new Door();
-            //tank = new Tank();
-            //this.program = program;
-
-            //containerA = new ContainerA();
-            //containerB = new ContainerB();
-            //containerSmall = new ContainerSmall();
-            //detergentSupply = new DetergentSupply();
+            this.programScreen = new Screen(ProgramScreen);
+            this.systemScreen = new Screen(systemScreen);
+            door.RegisterObserver(this.programScreen);
+            tank.RegisterObserver(this.programScreen);
+            intakeValve.RegisterObserver(this.programScreen);
+            drainValve.RegisterObserver(this.programScreen);
+            motor.RegisterObserver(this.programScreen);
+            thermometer.RegisterObserver(this.programScreen);
+            waterHeater.RegisterObserver(this.programScreen);
+            machineTimer.RegisterObserver(this.programScreen);
+            detergentSupply.RegisterObserver(this.programScreen);
+            
+            containerA.RegisterObserver(this.systemScreen);
+            containerB.RegisterObserver(this.systemScreen);
+            containerSmall.RegisterObserver(this.systemScreen);
         }
-
     }
 }
